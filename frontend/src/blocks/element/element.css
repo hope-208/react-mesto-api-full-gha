@@ -1,0 +1,12 @@
+.element {
+  display: grid;
+  grid: 282px 79px / 282px;
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+  margin-block: 0;
+  margin-inline: 0;
+  box-sizing: border-box;
+  object-fit: cover;
+  border-radius: 10px;
+}

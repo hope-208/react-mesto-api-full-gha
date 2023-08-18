@@ -1,0 +1,13 @@
+.popup__edit-avatar {
+  display: flex;
+  max-width: 430px;
+  width: 100%;
+  position: relative;
+  flex-wrap: wrap;
+  box-sizing: border-box;
+  border-radius: 10px;
+  margin: auto;
+  flex-direction: column;
+  align-content: center;
+  justify-content: space-between;
+}

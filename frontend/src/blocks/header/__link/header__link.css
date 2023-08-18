@@ -1,0 +1,25 @@
+.header__link {
+  display: flex;
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  align-self: center;
+  box-sizing: border-box;
+  color: #fff;
+  text-align: right;
+  font-size: 18px;
+  line-height: 22px;
+  cursor: pointer;
+}
+
+.header__link:hover,
+.header__link:focus,
+.header__link_disabled {
+  opacity: 0.6;
+}
+
+@media screen and (max-width: 425px) {
+  .header__link {
+    font-size: 14px;
+  }
+}

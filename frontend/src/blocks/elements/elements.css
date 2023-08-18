@@ -1,0 +1,32 @@
+.elements {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  display: grid;
+  grid: 361px / repeat(3, 282px);
+  gap: 20px 17px;
+  grid-auto-rows: 1fr;
+}
+
+@media screen and (max-width: 950px) {
+  .elements {
+    max-width: 88%;
+    margin: 0 auto;
+    grid: 361px / repeat(2, 282px);
+    justify-content: center;
+  }
+}
+
+@media screen and (max-width: 630px) {
+  .elements {
+    grid: 361px / 282px;
+  }
+}
+
+@media screen and (max-width: 540px) {
+  .elements {
+    max-width: 282px;
+    width: 100%;
+    row-gap: 20px;
+  }
+}

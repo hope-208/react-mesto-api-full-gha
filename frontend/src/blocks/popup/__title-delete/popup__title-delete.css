@@ -1,0 +1,24 @@
+.popup__title-delete {
+  grid-row: 2;
+  grid-column: 1;
+  display: flex;
+  max-width: 358px;
+  width: 100%;
+  margin-block: 0;
+  margin-inline: 0;
+  box-sizing: border-box;
+  font-style: normal;
+  font-weight: 900;
+  font-size: 24px;
+  justify-self: center;
+  z-index: 6;
+  padding-bottom: 36px;
+}
+
+@media screen and (max-width: 540px) {
+  .popup__title-delete {
+    max-width: 282px;
+    padding-bottom: 30px;
+    font-size: 18px;
+  }
+}

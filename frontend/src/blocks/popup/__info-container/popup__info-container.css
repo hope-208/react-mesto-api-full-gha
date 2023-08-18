@@ -1,0 +1,20 @@
+.popup__info-container {
+  grid-row: 2;
+  grid-column: 1;
+  display: flex;
+  max-width: 430px;
+  width: 100%;
+  position: relative;
+  background-color: #fff;
+  flex-wrap: wrap;
+  box-sizing: border-box;
+  border-radius: 10px;
+  margin: auto;
+  flex-direction: column;
+  align-content: center;
+  align-items: center;
+  justify-content: space-between;
+  row-gap: 32px;
+  object-fit: cover;
+  padding: 60px 36px;
+}

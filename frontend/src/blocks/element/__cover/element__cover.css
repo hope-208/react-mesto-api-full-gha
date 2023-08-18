@@ -1,0 +1,15 @@
+.element__cover {
+  grid-row: 1;
+  grid-column: 1;
+  display: block;
+  box-sizing: border-box;
+  max-width: 282px;
+  aspect-ratio: 1 / 1;
+  width: 100%;
+  object-fit: cover;
+  object-position: center;
+  overflow: hidden;
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+  cursor: pointer;
+}

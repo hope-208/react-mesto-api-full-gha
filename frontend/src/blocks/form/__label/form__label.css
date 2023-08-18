@@ -1,0 +1,14 @@
+.form__label {
+  min-height: 44px;
+  max-width: 358px;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  margin-block: 0;
+  margin-inline: 0;
+}
+
+.form__label:first-of-type {
+  margin-top: 40px;
+}

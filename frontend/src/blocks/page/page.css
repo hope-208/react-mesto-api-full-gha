@@ -1,0 +1,23 @@
+.page {
+  display: block;
+  max-width: 880px;
+  width: 100%;
+  margin: 45px auto 60px;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Inter', Arial, sans-serif;
+  text-decoration: none;
+  text-rendering: optimizeLegibility;
+}
+
+@media screen and (max-width: 880px) {
+  .page {
+    margin: 36px auto 48px;
+  }
+}
+
+@media screen and (max-width: 630px) {
+  .page {
+    margin: 28px auto 36px;
+  }
+}

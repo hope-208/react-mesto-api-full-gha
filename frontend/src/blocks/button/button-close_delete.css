@@ -1,0 +1,41 @@
+.button-close_delete {
+  margin: 0;
+  padding: 0;
+  margin-block: 0;
+  margin-inline: 0;
+  display: flex;
+  flex-wrap: wrap;
+  box-sizing: border-box;
+  border: 0;
+  align-self: center;
+  justify-content: center;
+  object-position: center;
+  object-fit: cover;
+  position: absolute;
+  width: 32px;
+  height: 32px;
+  top: calc((100% - (230px + 8px + 32px)) / 2);
+  right: calc((100% - (465px + 8px + 32px)) / 2);
+  background: transparent url(../../images/Close.svg) no-repeat center / 32px;
+  align-content: center;
+  z-index: 11;
+}
+
+.button-close_delete:hover {
+  opacity: 0.8;
+}
+
+.button-close_delete:focus {
+  opacity: 0.8;
+}
+
+@media screen and (max-width: 540px) {
+  .button-close_delete {
+    top: calc((100% - (180px + 8px + 20px)) / 2);
+    right: calc((100% - 282px) / 2);
+    width: 20px;
+    height: 20px;
+    background-size: 20px;
+    justify-self: right;
+  }
+}

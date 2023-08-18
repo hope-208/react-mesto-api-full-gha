@@ -1,0 +1,38 @@
+.auth-form__form-input {
+  display: flex;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  max-width: 358px;
+  width: 100%;
+  margin-block: 0;
+  margin-inline: 0;
+  box-sizing: border-box;
+  color: #fff;
+  font-size: 14px;
+  border-bottom: 1px solid #ccc;
+  background-color: transparent;
+  padding-bottom: 13px;
+  border-radius: 0;
+  box-shadow: none;
+  z-index: 6;
+}
+
+.auth-form__form-input:focus,
+.auth-form__form-input:active {
+  background-color: transparent;
+  color: #fff;
+}
+
+input[type='email'],
+[contenteditable] {
+  color: #fff;
+  padding-bottom: 13px;
+  background-color: transparent;
+}
+
+input[type='password'] {
+  color: #fff;
+  padding-bottom: 13px;
+  background-color: transparent;
+}

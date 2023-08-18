@@ -1,0 +1,15 @@
+.avatar__image {
+  position: relative;
+  object-fit: cover;
+}
+
+.avatar__image,
+.avatar__overlay {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  box-sizing: border-box;
+}

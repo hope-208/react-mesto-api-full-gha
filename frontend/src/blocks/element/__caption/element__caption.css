@@ -1,0 +1,14 @@
+.element__caption {
+  display: flex;
+  max-width: 100%;
+  margin: 0;
+  margin-block: 0;
+  margin-inline: 0;
+  box-sizing: border-box;
+  padding: 22px 20px;
+  background-color: #fff;
+  justify-content: space-between;
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+  z-index: 1;
+}

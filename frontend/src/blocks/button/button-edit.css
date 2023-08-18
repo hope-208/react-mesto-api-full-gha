@@ -1,0 +1,48 @@
+.button-edit {
+  margin: 0;
+  padding: 0;
+  margin-block: 0;
+  margin-inline: 0;
+  display: flex;
+  flex-wrap: wrap;
+  box-sizing: border-box;
+  align-self: center;
+  justify-content: center;
+  object-position: center;
+  object-fit: cover;
+  height: 24px;
+  grid-row: 1;
+  grid-column: 2;
+  width: 24px;
+  background: transparent url(../../images/pen.svg) no-repeat center / 10px;
+  border: 1px solid #fff;
+  margin-top: 30px;
+  margin-right: auto;
+  justify-self: end;
+}
+
+@media screen and (max-width: 950px) {
+  .button-edit {
+    margin-right: 0;
+    margin-top: 8px;
+  }
+}
+
+@media screen and (max-width: 770px) {
+  .button-edit {
+    width: 18px;
+    height: 18px;
+    padding: 3px;
+    margin-top: 3px;
+    background-size: 7.5px;
+  }
+}
+
+.button-edit:hover {
+  opacity: 0.6;
+  cursor: pointer;
+}
+
+.button-edit:focus {
+  opacity: 0.6;
+}

@@ -1,0 +1,45 @@
+.button-add {
+  margin: 0;
+  padding: 0;
+  margin-block: 0;
+  margin-inline: 0;
+  flex-wrap: wrap;
+  box-sizing: border-box;
+  align-self: center;
+  justify-content: center;
+  object-position: center;
+  object-fit: cover;
+  grid-row: 1;
+  grid-column: 3;
+  display: flex;
+  width: 150px;
+  height: 50px;
+  background: transparent url(../../images/button-add.svg) no-repeat center /
+    22px;
+  border: 2px solid #fff;
+  border-radius: 2px;
+  justify-self: center;
+}
+
+@media screen and (max-width: 950px) {
+  .button-add {
+    max-width: 282px;
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 770px) {
+  .button-add {
+    padding: 15px 62px;
+    background-size: 16px;
+  }
+}
+
+.button-add:hover {
+  opacity: 0.6;
+  cursor: pointer;
+}
+
+.button-add:focus {
+  opacity: 0.6;
+}
