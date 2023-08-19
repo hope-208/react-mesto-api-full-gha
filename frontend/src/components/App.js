@@ -55,6 +55,7 @@ const App = () => {
           handleLogOut();
         });
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
@@ -79,6 +80,7 @@ const App = () => {
 
   useEffect(() => {
     checkIsToken();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
