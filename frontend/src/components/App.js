@@ -129,7 +129,7 @@ const App = () => {
     register(password, email)
       .then(() => {
         handleRegisterSuccess();
-        navigate('/sign-in', { replace: true });
+        navigate('/signin', { replace: true });
       })
       .catch((err) => {
         console.log(err);
@@ -156,7 +156,7 @@ const App = () => {
   function handleSignOut() {
     localStorage.removeItem('jwt');
     handleLogOut();
-    navigate('/sign-in', { replace: true });
+    navigate('/signin', { replace: true });
   }
 
   function handleEditAvatarClick() {
@@ -276,12 +276,12 @@ const App = () => {
       <CurrentUserContext.Provider value={currentUser}>
         <Routes>
           <Route
-            path="/sign-up"
+            path="/signup"
             element={<Register onSignUp={handleSignUp} />}
           />
 
           <Route
-            path="/sign-in"
+            path="/signin"
             element={
               <div>
                 <Login onSignIn={handleSignIn} />
