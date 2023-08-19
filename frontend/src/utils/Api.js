@@ -84,10 +84,10 @@ class Api {
 }
 
 const api = new Api({
-  // baseUrl: 'https://api.mesto.hope-208.nomoreparties.co',
-  baseUrl: 'http://localhost:3001',
+  // baseUrl: 'http://localhost:4000',
+  baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-65',
   headers: {
-    authorization: `Bearer ${localStorage.getItem('jwt')}`,
+    authorization: '107572fd-a23a-435b-9724-668d3d26cd42',
     'Content-Type': 'application/json',
   },
 });

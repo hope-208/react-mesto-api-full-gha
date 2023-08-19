@@ -1,5 +1,6 @@
-export const BASE_URL = 'https://auth.nomoreparties.co';
-//export const BASE_URL = https://api.mesto.hope-208.nomoreparties.co;
+// export const BASE_URL = 'http://localhost:4000';
+export const BASE_URL = 'https://api.mesto.hope-208.nomoreparties.co';
+
 
 function checkResponse(res) {
   return res.ok ? res.json() : Promise.reject(`код ошибки: ${res.status}`);
@@ -11,7 +12,6 @@ export const register = (password, email) => {
     headers: {
       Accept: 'application/json',
       'Content-Type': 'application/json',
-      //'Origin': 'mesto.hope-208.nomoreparties.co',
     },
     body: JSON.stringify({ password, email }),
   }).then((res) => checkResponse(res));

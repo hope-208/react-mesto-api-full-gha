@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import PopupWithForm from './PopupWithForm.js';
 
 function AddPhotoPopup({ isOpen, onClose, onAddPlace, isLoading }) {

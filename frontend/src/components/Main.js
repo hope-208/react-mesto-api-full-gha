@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { CurrentUserContext } from '../contexts/CurrentUserContext.js';
 import Header from './Header.js';

@@ -2,13 +2,13 @@ const express = require('express');
 
 const app = express();
 
+const rateLimit = require('express-rate-limit');
+const helmet = require('helmet');
 const cors = require('cors');
 
-const helmet = require('helmet');
-
-const rateLimit = require('express-rate-limit');
-
-const { requestLogger } = require('../middlewares/logger');
+const {
+  requestLogger
+} = require('../middlewares/logger');
 
 const NotFoundError = require('../errors/NotFoundError');
 
@@ -18,12 +18,10 @@ app.use(cors());
 
 app.use(helmet());
 
-const limiter = rateLimit({
+app.use(rateLimit({
   windowMs: 15 * 60 * 1000,
-  max: 100
-});
-
-app.use(limiter);
+  max: 100,
+}));
 
 app.use(requestLogger);
 
