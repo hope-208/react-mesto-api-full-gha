@@ -14,7 +14,10 @@ const NotFoundError = require('../errors/NotFoundError');
 
 app.use(express.json());
 
-app.use(cors());
+app.use(cors({
+  origin: 'https://mesto.hope-208.nomoreparties.co',
+  credentials: true,
+}));
 
 app.use(helmet());
 
