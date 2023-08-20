@@ -20,6 +20,8 @@ app.use(cors({
     'http://mesto.hope-208.nomoreparties.co',
     'https://api.mesto.hope-208.nomoreparties.co',
     'http://api.mesto.hope-208.nomoreparties.co',
+    'https://mesto.nomoreparties.co/v1/cohort-65',
+    'http://mesto.nomoreparties.co/v1/cohort-65',
     'http://localhost:3000',
     'http://localhost:4000'
   ],
