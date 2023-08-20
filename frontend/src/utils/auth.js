@@ -13,6 +13,8 @@ export const register = (password, email) => {
     headers: {
       Accept: 'application/json',
       'Content-Type': 'application/json',
+      // 'Origin': 'mesto.hope-208.nomoreparties.co',
+      'Access-Control-Allow-Origin': '*',
     },
     body: JSON.stringify({ password, email }),
   }).then((res) => checkResponse(res));
@@ -25,6 +27,7 @@ export const authorize = (password, email) => {
     headers: {
       Accept: 'application/json',
       'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin': '*',
     },
 
     body: JSON.stringify({ password, email }),
@@ -35,14 +38,15 @@ export const authorize = (password, email) => {
     });
 };
 
-export const checkToken = (token) => {
+export const checkToken = () => {
   return fetch(`${BASE_URL}/users/me`, {
     method: 'GET',
     credentials: 'include',
     headers: {
       Accept: 'application/json',
       'Content-Type': 'application/json',
-      Authorization: `Bearer ${token}`,
+      'Access-Control-Allow-Origin': '*',
+      Authorization: `Bearer ${localStorage.getItem('jwt')}`, 
     },
   })
     .then((res) => checkResponse(res))

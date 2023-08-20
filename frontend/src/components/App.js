@@ -62,7 +62,7 @@ const App = () => {
     api
       .getProfileInfo()
       .then((data) => {
-        setCurrentUser(data);
+        setCurrentUser(data.data);
       })
       .catch((err) => {
         console.log(err);
@@ -71,7 +71,7 @@ const App = () => {
     api
       .getInitialCards()
       .then((data) => {
-        setCards(data);
+        setCards(data.data);
       })
       .catch((err) => {
         console.log(err);
@@ -129,7 +129,7 @@ const App = () => {
     register(password, email)
       .then(() => {
         handleRegisterSuccess();
-        navigate('/signin', { replace: true });
+        navigate('/sign-in', { replace: true });
       })
       .catch((err) => {
         console.log(err);
@@ -156,7 +156,7 @@ const App = () => {
   function handleSignOut() {
     localStorage.removeItem('jwt');
     handleLogOut();
-    navigate('/signin', { replace: true });
+    navigate('/sign-in', { replace: true });
   }
 
   function handleEditAvatarClick() {
@@ -185,7 +185,7 @@ const App = () => {
     api
       .editMyProfile({ name, about })
       .then((data) => {
-        setCurrentUser(data);
+        setCurrentUser(data.data);
         closeAllPopups();
       })
       .catch((err) => {
@@ -201,7 +201,7 @@ const App = () => {
     api
       .editMyAvatar({ avatar })
       .then((data) => {
-        setCurrentUser(data);
+        setCurrentUser(data.data);
         closeAllPopups();
       })
       .catch((err) => {
@@ -209,21 +209,6 @@ const App = () => {
       })
       .finally(() => {
         setIsLoading(false);
-      });
-  }
-
-  function handleCardLike(card) {
-    const isLiked = card.likes.some((i) => i._id === currentUser._id);
-
-    api
-      .changeLike(card._id, isLiked)
-      .then((newCard) => {
-        setCards((state) =>
-          state.map((c) => (c._id === card._id ? newCard : c))
-        );
-      })
-      .catch((err) => {
-        console.log(err);
       });
   }
 
@@ -243,13 +228,28 @@ const App = () => {
       });
   }
 
+  function handleCardLike(card) {
+    const isLiked = card.likes.some((i) => i === currentUser._id);
+
+    api
+      .changeLike(card._id, isLiked)
+      .then((newCard) => {
+        setCards((state) =>
+          state.map((c) => (c._id === card ? newCard : c))
+        );
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+  
   function handleCardDelete(evt) {
     evt.preventDefault();
     setIsLoading(true);
     api
       .deleteCard(deleteCard._id)
       .then(() => {
-        setCards((state) => state.filter((c) => c._id !== deleteCard._id));
+        setCards((state) => state.filter((c) => c !== deleteCard));
         closeAllPopups();
       })
       .catch((err) => {
@@ -276,12 +276,12 @@ const App = () => {
       <CurrentUserContext.Provider value={currentUser}>
         <Routes>
           <Route
-            path="/signup"
+            path="/sign-up"
             element={<Register onSignUp={handleSignUp} />}
           />
 
           <Route
-            path="/signin"
+            path="/sign-in"
             element={
               <div>
                 <Login onSignIn={handleSignIn} />
