@@ -2,6 +2,8 @@ const express = require('express');
 
 const app = express();
 
+const bodyParser = require('body-parser');
+
 const rateLimit = require('express-rate-limit');
 const helmet = require('helmet');
 const cors = require('cors');
@@ -13,6 +15,9 @@ const {
 const NotFoundError = require('../errors/NotFoundError');
 
 app.use(express.json());
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(cors({
   origin: [
