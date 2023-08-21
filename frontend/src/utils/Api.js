@@ -54,6 +54,7 @@ class Api {
       body: JSON.stringify({
         name,
         link: link,
+        likes: [],
       }),
     }).then((res) => {
       return this._checkResponse(res);
