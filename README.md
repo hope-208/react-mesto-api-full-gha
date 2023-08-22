@@ -7,13 +7,15 @@
 
 Адрес репозитория: https://github.com/hope-208/react-mesto-api-full-gha
 
+
 ## Ссылки на проект
 
-IP-адрес: <ipv4>158.160.32.101</ipv4>
+IP 158.160.32.101
 
-Frontend: <url>https://mesto.hope-208.nomoreparties.co</url>
+Frontend https://mesto.hope-208.nomoreparties.co
 
-Backend: <url>https://api.mesto.hope-208.nomoreparties.co</url>
+Backend https://api.mesto.hope-208.nomoreparties.co
+
 
 ## Инструкции по запуску проекта в локальном репозитории
 
