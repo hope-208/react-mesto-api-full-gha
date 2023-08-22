@@ -9,11 +9,11 @@
 
 ## Ссылки на проект
 
-IP-адрес: `158.160.32.101`
+IP-адрес: <ipv4>158.160.32.101</ipv4>
 
-Frontend: https://mesto.hope-208.nomoreparties.co
+Frontend: <url>https://mesto.hope-208.nomoreparties.co</url>
 
-Backend: https://api.mesto.hope-208.nomoreparties.co
+Backend: <url>https://api.mesto.hope-208.nomoreparties.co</url>
 
 ## Инструкции по запуску проекта в локальном репозитории
 
