@@ -6,33 +6,34 @@ class Api {
 
   _checkResponse(res) {
     if (res.ok) {
-      // return res.json();
-      return Promise.resolve(res.json());
+      return res.json();
     } else {
-      return Promise.reject(`Код ошибки: ${res.status}`);
+      return Promise.reject(`код ошибки: ${res.status}`);
     }
   }
 
-  async getInitialCards() {
-    const res = await fetch(`${this._baseUrl}/cards`, {
+  getInitialCards() {
+    return fetch(`${this._baseUrl}/cards`, {
       method: 'GET',
       credentials: 'include',
       headers: this._headers,
+    }).then((res) => {
+      return this._checkResponse(res);
     });
-      return this._checkResponse(res);
   }
 
-  async getProfileInfo() {
-    const res = await fetch(`${this._baseUrl}/users/me`, {
+  getProfileInfo() {
+    return fetch(`${this._baseUrl}/users/me`, {
       method: 'GET',
       credentials: 'include',
       headers: this._headers,
-  });
+    }).then((res) => {
       return this._checkResponse(res);
+    });
   }
 
-  async editMyProfile({ name, about }) {
-    const res = await fetch(`${this._baseUrl}/users/me`, {
+  editMyProfile({ name, about }) {
+    return fetch(`${this._baseUrl}/users/me`, {
       method: 'PATCH',
       credentials: 'include',
       headers: this._headers,
@@ -40,12 +41,13 @@ class Api {
         name: name,
         about: about,
       }),
+    }).then((res) => {
+      return this._checkResponse(res);
     });
-    return this._checkResponse(res);
   }
 
-  async addPhoto({ name, link }) {
-    const res = await fetch(`${this._baseUrl}/cards`, {
+  addPhoto({ name, link }) {
+    return fetch(`${this._baseUrl}/cards`, {
       method: 'POST',
       credentials: 'include',
       headers: this._headers,
@@ -54,43 +56,50 @@ class Api {
         link: link,
         likes: [],
       }),
-    });
+    }).then((res) => {
       return this._checkResponse(res);
+    });
   }
 
-  async changeLike(cardId, isLiked) {
-    const res = await fetch(`${this._baseUrl}/cards/${cardId}/likes`, {
+  changeLike(cardId, isLiked) {
+    return fetch(`${this._baseUrl}/cards/${cardId}/likes`, {
       method: isLiked ? 'DELETE' : 'PUT',
       credentials: 'include',
       headers: this._headers,
-    });
+    }).then((res) => {
       return this._checkResponse(res);
+    });
   }
 
-  async deleteCard(cardId) {
-    const res = await fetch(`${this._baseUrl}/cards/${cardId}`, {
+  deleteCard(cardId) {
+    return fetch(`${this._baseUrl}/cards/${cardId}`, {
       method: 'DELETE',
       credentials: 'include',
       headers: this._headers,
-    });
+    }).then((res) => {
       return this._checkResponse(res);
+    });
   }
 
-  async editMyAvatar(data) {
-    const res = await fetch(`${this._baseUrl}/users/me/avatar`, {
+  editMyAvatar(data) {
+    return fetch(`${this._baseUrl}/users/me/avatar`, {
       method: 'PATCH',
       credentials: 'include',
       headers: this._headers,
       body: JSON.stringify({ avatar: data.avatar }),
-    });
+    }).then((res) => {
       return this._checkResponse(res);
+    });
   }
 }
 
 const api = new Api({
+  // baseUrl: 'http://localhost:4000',
+  // baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-65',
   baseUrl: 'https://api.mesto.hope-208.nomoreparties.co',
   headers: {
-    Authorization: `Bearer ${localStorage.getItem('jwt')}`,
+    Authorization: `Bearer ${localStorage.getItem('jwt')}`,    
+    // authorization: '107572fd-a23a-435b-9724-668d3d26cd42',
     'Content-Type': 'application/json',
     'Access-Control-Allow-Origin': '*',
   },
