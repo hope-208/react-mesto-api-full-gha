@@ -76,7 +76,7 @@ const App = () => {
       .catch((err) => {
         console.log(err);
       });
-  }, []);
+  }, [navigate]);
 
   useEffect(() => {
     checkIsToken();
@@ -234,8 +234,9 @@ const App = () => {
     api
       .changeLike(card._id, isLiked)
       .then((newCard) => {
+        console.log(card);
         setCards((state) =>
-          state.map((c) => (c._id === card ? newCard : c))
+        state.map((c) => (c._id === card._id ? newCard : c))
         );
       })
       .catch((err) => {
@@ -249,7 +250,7 @@ const App = () => {
     api
       .deleteCard(deleteCard._id)
       .then(() => {
-        setCards((state) => state.filter((c) => c !== deleteCard));
+        setCards((state) => state.filter((c) => c !== deleteCard._id));
         closeAllPopups();
       })
       .catch((err) => {

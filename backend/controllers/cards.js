@@ -5,15 +5,21 @@ const ValidationError = require('../errors/ValidationError');
 
 module.exports.getCardsAll = (req, res, next) => {
   Card.find({})
+    .populate(['owner', 'likes'])
     .then((card) => res.send({ data: card }))
     .catch(next);
 };
 
 module.exports.createCard = (req, res, next) => {
   const { name, link } = req.body;
+  const { id } = req.user._id;
 
-  return Card.create({ name, link, owner: req.user._id })
-    .then((card) => res.send({ data: card }))
+  return Card.create({ name, link, owner: id })
+    .then((card) => {
+      card.populate('owner')
+        .then(() => res.send({ data: card }))
+        .catch(next);
+    })
     .catch((err) => {
       ValidationError(err, next);
     });
@@ -48,6 +54,7 @@ module.exports.likeCard = (req, res, next) => {
     { $addToSet: { likes: req.user._id } },
     { new: true }
   )
+    .populate(['owner', 'likes'])
     .then((card) => {
       if (!card) {
         return next(new NotFoundError(`Передан несуществующий id ${id} карточки.`));
@@ -66,7 +73,7 @@ module.exports.dislikeCard = (req, res, next) => {
     id,
     { $pull: { likes: req.user._id } },
     { new: true }
-  )
+  ).populate(['owner', 'likes'])
     .then((card) => {
       if (!card) {
         return next(new NotFoundError(`Передан несуществующий id ${id} карточки.`));

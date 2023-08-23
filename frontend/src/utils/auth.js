@@ -13,7 +13,6 @@ export const register = (password, email) => {
     headers: {
       Accept: 'application/json',
       'Content-Type': 'application/json',
-      // 'Origin': 'mesto.hope-208.nomoreparties.co',
       'Access-Control-Allow-Origin': '*',
     },
     body: JSON.stringify({ password, email }),
