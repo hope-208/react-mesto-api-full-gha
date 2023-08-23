@@ -59,9 +59,9 @@ function Main({
         </section>
 
         <section className="elements" aria-label="Записи в профиле">
-          {cards.map((card) => (
+          {cards.map((card, key) => (
             <Card
-              key={card._id}
+              key={key}
               card={card}
               onCardClick={onCardClick}
               onCardLike={onCardLike}
