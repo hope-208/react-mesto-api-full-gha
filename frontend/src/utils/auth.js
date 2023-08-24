@@ -1,6 +1,4 @@
-// export const BASE_URL = 'http://localhost:4000';
 export const BASE_URL = 'https://api.mesto.hope-208.nomoreparties.co';
-
 
 function checkResponse(res) {
   return res.ok ? res.json() : Promise.reject(`код ошибки: ${res.status}`);

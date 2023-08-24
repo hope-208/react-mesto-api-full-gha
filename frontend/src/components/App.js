@@ -217,7 +217,7 @@ const App = () => {
     api
       .addPhoto({ name, link })
       .then((newCard) => {
-        setCards([newCard, ...cards]);
+        setCards([newCard.data, ...cards]);
         closeAllPopups();
       })
       .catch((err) => {
@@ -229,13 +229,13 @@ const App = () => {
   }
 
   function handleCardLike(card) {
-    const isLiked = card.likes.some((i) => i === currentUser._id);
+    const isLiked = card.likes.some((user) => user === currentUser._id);    
     
     api
       .changeLike(card._id, isLiked)
       .then((newCard) => {
         setCards((state) =>
-        state.map((c) => (c._id === card._id ? newCard : c))
+        state.map((c) => (c._id === newCard.data._id ? newCard.data : c))
         );
       })
       .catch((err) => {

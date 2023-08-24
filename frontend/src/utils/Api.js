@@ -86,7 +86,6 @@ class Api {
 }
 
 const api = new Api({
-  // baseUrl: 'http://localhost:3000',
   baseUrl: 'https://api.mesto.hope-208.nomoreparties.co',
   headers: {
     Authorization: `Bearer ${localStorage.getItem('jwt')}`,
