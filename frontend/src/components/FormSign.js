@@ -1,6 +1,6 @@
 import React from 'react';
 
-function FormSign({ handleChange, formValue, handleSubmit }) {
+function FormSign({ handleChange, formValue, handleSubmit, button }) {
   return (
     <>
       <form onSubmit={handleSubmit} className="auth-form__form">
@@ -29,7 +29,7 @@ function FormSign({ handleChange, formValue, handleSubmit }) {
           required
         />
         <button type="submit" className="button-submit-auth">
-          Войти
+          {button}
         </button>
       </form>
     </>

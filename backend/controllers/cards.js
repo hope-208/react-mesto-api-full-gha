@@ -15,7 +15,7 @@ module.exports.createCard = (req, res, next) => {
 
   return Card.create({ name, link, owner: req.user._id })
     .then((card) => {
-      card.populate('owner')
+      card.populate(['owner', 'likes'])
         .then(() => res.send({ data: card }))
         .catch(next);
     })

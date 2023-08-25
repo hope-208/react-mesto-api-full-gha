@@ -48,6 +48,16 @@ const App = () => {
             handleLogin();
             setEmailUser(userData.email);
             navigate('/', { replace: true });
+            api
+              .getProfileInfo()
+              .then((data) => {
+                setCurrentUser(data.data);
+                api
+                  .getInitialCards()
+                  .then((data) => {
+                    setCards(data.data);
+                  })
+              });
           }
         })
         .catch((err) => {
@@ -55,32 +65,12 @@ const App = () => {
           handleLogOut();
         });
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
-  useEffect(() => {
-    api
-      .getProfileInfo()
-      .then((data) => {
-        setCurrentUser(data.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-
-    api
-      .getInitialCards()
-      .then((data) => {
-        setCards(data.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }, [navigate]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isLoggedIn, navigate, cards]);
 
   useEffect(() => {
     checkIsToken();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
@@ -125,6 +115,7 @@ const App = () => {
   }
 
   function handleSignUp(userData) {
+    setIsLoading(true);
     const { password, email } = userData;
     register(password, email)
       .then(() => {
@@ -134,10 +125,14 @@ const App = () => {
       .catch((err) => {
         console.log(err);
         handleRegisterError();
+      })
+      .finally(() => {
+        setIsLoading(false);
       });
   }
 
   function handleSignIn(userData) {
+    setIsLoading(true);
     const { password, email } = userData;
     authorize(password, email)
       .then((data) => {
@@ -150,6 +145,9 @@ const App = () => {
       .catch((err) => {
         console.log(err);
         handleLogOut();
+      })
+      .finally(() => {
+        setIsLoading(false);
       });
   }
 
@@ -229,20 +227,20 @@ const App = () => {
   }
 
   function handleCardLike(card) {
-    const isLiked = card.likes.some((user) => user._id === currentUser._id); 
-    
+    const isLiked = card.likes.some((user) => user._id === currentUser._id);
+
     api
       .changeLike(card._id, isLiked)
       .then((cardLike) => {
         setCards((state) =>
-        state.map((c) => (c._id === cardLike.data._id ? cardLike.data : c))
+          state.map((c) => (c._id === cardLike.data._id ? cardLike.data : c))
         );
       })
       .catch((err) => {
         console.log(err);
       });
   }
-  
+
   function handleCardDelete(evt) {
     evt.preventDefault();
     setIsLoading(true);
@@ -277,14 +275,14 @@ const App = () => {
         <Routes>
           <Route
             path="/sign-up"
-            element={<Register onSignUp={handleSignUp} />}
+            element={<Register onSignUp={handleSignUp} button={isLoading ? 'Регистрация...' : 'Зарегистрироваться'} />}
           />
 
           <Route
             path="/sign-in"
             element={
               <div>
-                <Login onSignIn={handleSignIn} />
+                <Login onSignIn={handleSignIn} button={isLoading ? 'Вход...' : 'Войти'} />
               </div>
             }
           />

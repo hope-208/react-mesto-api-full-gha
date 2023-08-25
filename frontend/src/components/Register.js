@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import FormSign from './FormSign.js';
 
 import Header from './Header.js';
-const Register = ({ onSignUp }) => {
+const Register = ({ onSignUp, button }) => {
   const [formValue, setFormValue] = useState({
     password: '',
     email: '',
@@ -39,10 +39,11 @@ const Register = ({ onSignUp }) => {
           handleChange={handleChange}
           formValue={formValue}
           handleSubmit={handleSubmit}
+          button={button}
         />
         <p className="auth-form__signin">
           Уже зарегистрированы?<span> </span>
-          <Link to="sign-in" className="auth-form__login-link" replace>
+          <Link to="/sign-in" className="auth-form__login-link" replace>
             Войти
           </Link>
         </p>

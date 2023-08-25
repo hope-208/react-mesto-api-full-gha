@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import Header from './Header.js';
 import FormSign from './FormSign.js';
 
-const Login = ({ onSignIn }) => {
+const Login = ({ onSignIn, button }) => {
   const [formValue, setFormValue] = useState({
     email: '',
     password: '',
@@ -44,6 +44,7 @@ const Login = ({ onSignIn }) => {
           handleChange={handleChange}
           formValue={formValue}
           handleSubmit={handleSubmit}
+          button={button}
         />
       </div>
     </>
