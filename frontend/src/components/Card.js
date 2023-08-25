@@ -5,10 +5,11 @@ function Card({ card, onCardClick, onCardLike, onCardDelete }) {
   const currentUser = useContext(CurrentUserContext);
 
   const isOwn = (card.owner?._id || card.owner) === currentUser._id;
-  const isLiked = card.likes.some((i) => i === currentUser._id);  
+  const isLiked = card.likes.some((i) => i._id === currentUser._id);  
 
   const cardLikeButtonClassName = `button-like ${
-    (isLiked && 'button-like_active') || ''}`;
+    isLiked && 'button-like_active'
+  }`;
 
   const cardDeleteButtonClassName = `button-delete ${
     isOwn ? 'button-delete_active' : ''

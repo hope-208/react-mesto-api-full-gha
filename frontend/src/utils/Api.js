@@ -50,7 +50,7 @@ class Api {
       headers: this._headers,
       body: JSON.stringify({
         name,
-        link: link
+        link
       }),
     });
       return this._checkResponse(res);
@@ -88,7 +88,7 @@ class Api {
 const api = new Api({
   baseUrl: 'https://api.mesto.hope-208.nomoreparties.co',
   headers: {
-    Authorization: `Bearer ${localStorage.getItem('jwt')}`,
+    'Authorization': `Bearer ${localStorage.getItem('jwt')}`,
     'Content-Type': 'application/json',
     'Access-Control-Allow-Origin': '*',
   },

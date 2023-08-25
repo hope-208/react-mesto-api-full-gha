@@ -7,9 +7,8 @@ function checkResponse(res) {
 export const register = (password, email) => {
   return fetch(`${BASE_URL}/signup`, {
     method: 'POST',
-    credentials: 'include',
     headers: {
-      Accept: 'application/json',
+      'Accept': 'application/json',
       'Content-Type': 'application/json',
       'Access-Control-Allow-Origin': '*',
     },
@@ -22,7 +21,7 @@ export const authorize = (password, email) => {
     method: 'POST',
     credentials: 'include',
     headers: {
-      Accept: 'application/json',
+      'Accept': 'application/json',
       'Content-Type': 'application/json',
       'Access-Control-Allow-Origin': '*',
     },
@@ -40,7 +39,7 @@ export const checkToken = () => {
     method: 'GET',
     credentials: 'include',
     headers: {
-      Accept: 'application/json',
+      'Accept': 'application/json',
       'Content-Type': 'application/json',
       'Access-Control-Allow-Origin': '*',
       Authorization: `Bearer ${localStorage.getItem('jwt')}`, 

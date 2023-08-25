@@ -229,13 +229,13 @@ const App = () => {
   }
 
   function handleCardLike(card) {
-    const isLiked = card.likes.some((user) => user === currentUser._id);    
+    const isLiked = card.likes.some((user) => user._id === currentUser._id); 
     
     api
       .changeLike(card._id, isLiked)
-      .then((newCard) => {
+      .then((cardLike) => {
         setCards((state) =>
-        state.map((c) => (c._id === newCard.data._id ? newCard.data : c))
+        state.map((c) => (c._id === cardLike.data._id ? cardLike.data : c))
         );
       })
       .catch((err) => {
