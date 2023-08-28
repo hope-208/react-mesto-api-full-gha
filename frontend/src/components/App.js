@@ -34,6 +34,19 @@ const App = () => {
   const [isDeletePopupOpen, setDeletePopupOpen] = useState(false);
   const [deleteCard, setDeleteCard] = useState(null);
 
+  useEffect(() => {
+    if (isLoggedIn) {
+      Promise.all([api.getProfileInfo(), api.getInitialCards()])
+        .then(([userInfo, cardsList]) => {
+          setCurrentUser(userInfo.data);
+          setCards(cardsList.data);
+        })
+        .catch((err) => {
+          console.log(err);
+        })
+    };
+  }, [isLoggedIn]);
+
   const checkIsToken = useCallback(() => {
     const jwt = localStorage.getItem('jwt');
     if (jwt) {
