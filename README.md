@@ -10,7 +10,7 @@
 
 ## Ссылки на проект
 
-IP 158.160.32.101
+IP 158.160.61.229
 
 Frontend https://mesto.hope-208.nomoreparties.co
 
