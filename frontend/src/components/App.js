@@ -34,18 +34,19 @@ const App = () => {
   const [isDeletePopupOpen, setDeletePopupOpen] = useState(false);
   const [deleteCard, setDeleteCard] = useState(null);
 
-  useEffect(() => {
-    if (isLoggedIn) {
-      Promise.all([api.getProfileInfo(), api.getInitialCards()])
-        .then(([userInfo, cardsList]) => {
-          setCurrentUser(userInfo.data);
-          setCards(cardsList.data);
-        })
-        .catch((err) => {
-          console.log(err);
-        })
-    };
-  }, [isLoggedIn]);
+  // useEffect(() => {
+  //   if (isLoggedIn) {
+  //     Promise.all([api.getProfileInfo(), api.getInitialCards()])
+  //       .then(([userInfo, cardsList]) => {
+  //         setCurrentUser(userInfo.data);
+  //         setCards(cardsList.data);
+  //       })
+  //       .catch((err) => {
+  //         console.log(err);
+  //       })
+  //   };
+  //   // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, []);
 
   const checkIsToken = useCallback(() => {
     const jwt = localStorage.getItem('jwt');
@@ -79,12 +80,12 @@ const App = () => {
         });
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isLoggedIn, navigate, cards]);
+  }, []);
 
   useEffect(() => {
     checkIsToken();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [isLoggedIn]);
 
   useEffect(() => {
     function handleEsc(evt) {
@@ -145,7 +146,6 @@ const App = () => {
   }
 
   function handleSignIn(userData) {
-    setIsLoading(true);
     const { password, email } = userData;
     authorize(password, email)
       .then((data) => {
@@ -153,14 +153,15 @@ const App = () => {
         setEmailUser(userData.email);
         handleLogin();
         navigate('/', { replace: true });
+        api
+          .getInitialCards()
+          .then((data) => {
+            setCards(data.data);
+          })
       })
-
       .catch((err) => {
         console.log(err);
         handleLogOut();
-      })
-      .finally(() => {
-        setIsLoading(false);
       });
   }
 
@@ -168,6 +169,9 @@ const App = () => {
     localStorage.removeItem('jwt');
     handleLogOut();
     navigate('/sign-in', { replace: true });
+    setCurrentUser({});
+    setEmailUser('');
+    setCards([]);
   }
 
   function handleEditAvatarClick() {

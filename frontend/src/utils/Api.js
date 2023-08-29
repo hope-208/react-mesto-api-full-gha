@@ -12,25 +12,32 @@ class Api {
     }
   }
 
+  _loadToken() {
+    this._headers.Authorization = `Bearer ${localStorage.getItem('jwt')}`
+  }
+
   async getInitialCards() {
+    this._loadToken();
     const res = await fetch(`${this._baseUrl}/cards`, {
       method: 'GET',
       credentials: 'include',
       headers: this._headers,
     });
-      return this._checkResponse(res);
+    return this._checkResponse(res);
   }
 
   async getProfileInfo() {
+    this._loadToken();
     const res = await fetch(`${this._baseUrl}/users/me`, {
       method: 'GET',
       credentials: 'include',
       headers: this._headers,
     });
-      return this._checkResponse(res);
+    return this._checkResponse(res);
   }
 
   async editMyProfile({ name, about }) {
+    this._loadToken();
     const res = await fetch(`${this._baseUrl}/users/me`, {
       method: 'PATCH',
       credentials: 'include',
@@ -40,10 +47,11 @@ class Api {
         about: about,
       }),
     });
-      return this._checkResponse(res);
+    return this._checkResponse(res);
   }
 
   async addPhoto({ name, link }) {
+    this._loadToken();
     const res = await fetch(`${this._baseUrl}/cards`, {
       method: 'POST',
       credentials: 'include',
@@ -53,35 +61,38 @@ class Api {
         link
       }),
     });
-      return this._checkResponse(res);
+    return this._checkResponse(res);
   }
 
   async changeLike(cardId, isLiked) {
+    this._loadToken();
     const res = await fetch(`${this._baseUrl}/cards/${cardId}/likes`, {
       method: isLiked ? 'DELETE' : 'PUT',
       credentials: 'include',
       headers: this._headers,
     });
-      return this._checkResponse(res);
+    return this._checkResponse(res);
   }
 
   async deleteCard(cardId) {
+    this._loadToken();
     const res = await fetch(`${this._baseUrl}/cards/${cardId}`, {
       method: 'DELETE',
       credentials: 'include',
       headers: this._headers,
     });
-      return this._checkResponse(res);
+    return this._checkResponse(res);
   }
 
   async editMyAvatar(data) {
+    this._loadToken();
     const res = await fetch(`${this._baseUrl}/users/me/avatar`, {
       method: 'PATCH',
       credentials: 'include',
       headers: this._headers,
       body: JSON.stringify({ avatar: data.avatar }),
     });
-      return this._checkResponse(res);
+    return this._checkResponse(res);
   }
 }
 
